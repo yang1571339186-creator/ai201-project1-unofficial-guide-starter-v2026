@@ -55,7 +55,8 @@ in at least 4 of 5 tries.
 
 ---
 
-## 4. Something about your chunks
+## 4. For each of the chunks, the context of which it is referring to must be contained.
+Ensure that the header of the document is not removed from the chunks.
 
 <!-- YOU WRITE THIS ONE.
 
@@ -71,7 +72,7 @@ in at least 4 of 5 tries.
 
 
 
-**Why this target:**
+**Why this target: Since some of the documents has a header that contextualizes the information. Thus, cutting off the header would remove a lot of the context for the information. **
 
 
 
