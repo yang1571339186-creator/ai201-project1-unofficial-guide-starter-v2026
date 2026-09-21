@@ -25,7 +25,7 @@ contains the answer.
 **Why this target:**
 <!-- e.g. "One of my questions is about a topic only two documents mention, so
      I expect that one to be hard." -->
-
+I picked this target because it is important that the chunks that we retrieved contains the answer for the model to return a correct answer. However, for it to be 5/5 is unlikely since the size of each article is so different. 
 ---
 
 ## 2. Every answer names a source
@@ -36,7 +36,7 @@ Every answer the system produces names at least one source document.
 <!-- Why all five and not four? What about your setup makes that achievable —
      or what would have to go wrong for it not to be? -->
 
----
+This ensure that every answer that is retrieved is grounded in at least one of the document so that we can review it. 
 
 ## 3. The relevance gate stops out-of-corpus questions
 
@@ -50,8 +50,7 @@ in at least 4 of 5 tries.
      just keep five of them, or the "4 of 5" above has nothing to be 4 of. -->
 
 **Why this target:**
-<!-- What did your distances look like when you set the cutoff in Milestone 4?
-     Was there a clean gap, or did the two groups overlap? -->
+This is important to limit the scope of the response and what question will return an answer. 
 
 ---
 
@@ -69,7 +68,8 @@ Ensure that the header of the document is not removed from the chunks.
           sentence cut in half at either end."
        - "No chunk is shorter than 200 characters, since anything below that
           in my corpus turned out to be a heading with no content under it." -->
-
+**Why this target:**
+Some of the documents are written such that only the header contextualizes the docuemnt, so it is important that the chunks returns the header.
 
 
 **Why this target: Since some of the documents has a header that contextualizes the information. Thus, cutting off the header would remove a lot of the context for the information. **
@@ -78,7 +78,7 @@ Ensure that the header of the document is not removed from the chunks.
 
 ---
 
-## 5. Your choice
+## 5. For any question that is about a city dont in document, it should be able to detect it abd consider irrelvant.
 
 <!-- YOU WRITE THIS ONE TOO.
 
@@ -90,7 +90,7 @@ Ensure that the header of the document is not removed from the chunks.
 
 
 
-**Why this target:**
+**Why this target: It is important that the model finds that cities not in the document is not counted relevant. **
 
 
 
