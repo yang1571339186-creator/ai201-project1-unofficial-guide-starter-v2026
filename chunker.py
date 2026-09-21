@@ -97,7 +97,10 @@ def split_documents(documents: list[Document]) -> list[Chunk]:
       - Would splitting on paragraph breaks keep more thoughts intact than
         splitting on a character count?
     """
-    return fallback_split(documents)
+    '''
+    237 words is the smallest document with 443 being the larger
+    '''
+    return fallback_split(documents, 237 * 4, 206 * 4)
 
 
 def describe(chunks: list[Chunk]) -> str:

@@ -26,11 +26,12 @@
      this repo.
 
      Milestone 5. -->
+The corpus I picked is the city_guides. THe system should therefore be able to answer questions about the cities listed under those documents. In addition, the system should reject irrelvant questions of these cities or questions about cities not found in the document. 
 
 ## Chunking Strategy
 
-**Chunk size:**
-**Overlap:**
+**Chunk size: 237 x 4**
+**Overlap: 824 x 4**
 
 <!-- What about YOUR documents made you pick these numbers? Short posts and
      long sectioned guides don't want the same chunking, and "800 seemed
@@ -53,29 +54,105 @@
 
      Milestone 3. -->
 
-**Chunk 1** — source: `` — produced by: ``
-
 ```
-```
+======================================================================
+Chunk 1  |  source: guide_accessibility.md#0  |  produced by: chunker.py::fallback_split
+======================================================================
+# Getting around the region with limited mobility
 
-**Chunk 2** — source: `` — produced by: ``
+An honest assessment rather than a promotional one. Some of these places are
+difficult and it is better to know in advance.
 
-```
-```
+## Straightforward
 
-**Chunk 3** — source: `` — produced by: ``
+**Thornby Wells** is the easiest town in the region. It is flat, compact, and
+everything is within three minutes of everything else. Parking is free for two
+hours anywhere in town and the station is central. The pump room and gardens
+are level throughout.
 
-```
-```
+**Marchwood** has a modern tram network with level boarding on all four lines,
+running every 8 minutes on weekdays. The city museum and covered market are both
+step-free. The distances between districts are the main consideration.
 
-**Chunk 4** — source: `` — produced by: ``
+**Brightwater** is level along the river and through the centre. The mill museum
+is step-free. The station is a 15-minute walk from campus on flat ground, or the
+shuttle meets the four busiest arrivals.
 
-```
-```
+## Mixed
 
-**Chunk 5** — source: `` — produced by: ``
+**Pellew Sands** has a two-mile seafront that is
 
-```
+======================================================================
+Chunk 2  |  source: guide_corry_vale.md#9  |  produced by: chunker.py::fallback_split
+======================================================================
+s is not a place with options.
+
+## What to see
+
+The valley itself is the attraction. The footpath network is dense and well marked, and a circuit taking in three of the four villages is about nine miles with 500 metres of ascent. The chapel in the second village is 12th century and always unlocked.
+
+## Where to stay
+
+Perhaps thirty beds in the entire valley, spread across two pubs and a handful of farmhouse rooms. In summer these are booked months ahead. Camping is permitted on two marked fields and nowhere else.
+
+## When to go
+
+May to September. Outside those months the pub in the third village closes, the farm shop reduces its hours, and several footpaths become genuinely boggy rather than merely wet. The road is not gritted above the second village and is impassable in snow.
+
+## Practical notes
+
+Cash is still useful at the market and in smaller places, though cards are
+accepted almost everywhere now. Mobile coverage is good in the
+
+======================================================================
+Chunk 3  |  source: guide_givens_mill.md#5  |  produced by: chunker.py::fallback_split
+======================================================================
+in both directions for as far as you want to walk.
+
+## Eat and drink
+
+A tearoom attached to the mill, open 10 to 4 daily except Tuesdays, which sells bread made from the flour ground twenty metres away and is the reason most people come. One pub, food served lunchtimes and Thursday to Saturday evenings.
+
+## What to see
+
+The mill runs tours on the hour from 11 to 3 and the machinery is operating during them, which is loud and much more impressive than a static exhibit. The church has a Saxon doorway. The river walk downstream reaches Brightwater in about three hours.
+
+## Where to stay
+
+Nothing in the village itself. The nearest rooms are in Brightwater, which is close enough that this is not really a problem — most people come for a half day.
+
+## When to go
+
+The mill runs March to November and is closed entirely in winter. Late spring is the best time. Summer Saturdays are busy enough that the car park becomes the limiting factor; come
+
+======================================================================
+Chunk 4  |  source: guide_marchwood.md#1  |  produced by: chunker.py::fallback_split
+======================================================================
+rs pass through rather than stop in. That is a mistake, though an understandable one, since almost nothing of interest is near the station.
+
+## Getting there
+
+Every railway line in the region meets here, which is the city's defining feature. Trains to Brightwater run every 40 minutes until 11pm. The airport is 20 minutes out by a dedicated bus that runs every 15 minutes and costs more than the equivalent taxi shared between three people.
+
+## Getting around
+
+A tram network of four lines, running every 8 minutes on weekdays and every 15 at weekends, until midnight. A day ticket costs less than two single fares and nobody tells you this at the machine. The centre is walkable but the interesting districts are not adjacent to each other.
+
+## Eat and drink
+
+The best eating is in the Northgate district, a 12-minute tram ride from the station, where about thirty restaurants sit within four streets. The area immediately around the station is u
+
+======================================================================
+Chunk 5  |  source: guide_regional_transport.md#12  |  produced by: chunker.py::fallback_split
+======================================================================
+on a good surface. The
+old railway trackbed from Kestrelford runs six miles on an easy gradient and is
+the best walking in the region for the effort involved. The coastal path from
+Halden Bay is more serious — exposed, and closed in high wind.
+
+Cycling is pleasant on the river path and the trackbed, and unpleasant on Mill
+Road and the coast road, neither of which has a shoulder.
+
 ```
 
 ## Sample Answer
@@ -83,14 +160,15 @@
 <!-- One complete question and answer, pasted as text, with the source line
      visible. Milestone 4. -->
 
-**Question:**
-
-**Answer:**
-
 ```
+**Question: Best time of year to visit thornby well's gardens**
+
+**Answer: The best time to visit the gardens in Thornby Wells is in May and June (*guide_thornby_wells.md*).
+
+Sources retrieved: guide_givens_mill.md, guide_thornby_wells.md, guide_walking.md**
 ```
 
-**My relevance cutoff:**
+**My relevance cutoff: 0.47**
 
 <!-- The number you set in config.py, and how you got there.
 
@@ -102,8 +180,8 @@
      Milestone 4. -->
 
 | Question | In corpus? | Best distance |
-|---|---|---|
-|  |  |  |
+| Best time of year to visit thornby well's gardens|yes|0.467|
+|  Best time of year to visit thornby well's gardens In china|No  |0.57  |
 
 ## How I Used AI
 
@@ -116,9 +194,10 @@
 
      Milestone 5. -->
 
-**1.**
+**1. One specific thing I asked for is to find the average size of the documents as well as the lowest and highest, this hlped
+informed the size of the overlap and chunk**
 
-**2.**
+**2.Another thing that the AI helped me on is understanding the code base, there is a lot of code so asking claude for an overvewi is very helpful**
 
 <!-- ── Stretch features ─────────────────────────────────────────────────────
      Doing one? Say so here BEFORE you start. A feature this README never
