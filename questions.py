@@ -43,6 +43,7 @@ OUT_OF_SCOPE = [
     "Who won the 1994 World Cup?",
     "What is the recommended dosage of ibuprofen for a headache?",
     "How do I write a for loop in Rust?",
+    "How long to walk around Brightwater in England end to end"
 ]
 
 
